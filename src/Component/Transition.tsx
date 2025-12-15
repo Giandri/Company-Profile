@@ -25,13 +25,17 @@ export default function Transition({ children }: { children: React.ReactNode }) 
       triggerPageTransition();
     }
   }, [pathname, isFirstLoad, isMounted]);
-
-  // Don't render until mounted to avoid hydration issues
   if (!isMounted) {
     return (
       <div>
         <div className="min-h-screen bg-[#2973B2] z-[9999] fixed top-0 left-0 w-full flex items-center justify-center">
-          <img src="/ptmlm.png" alt="PT MLM Logo" className="w-48 h-auto object-contain" />
+          <div className="text-white font-bold flex flex-col items-center">
+            <h1 className="text-xl sm:text-4xl leading-none">Mutiara</h1>
+            <h1 className="text-xl sm:text-4xl leading-none">Laboratorium</h1>
+            <h1 className="flex gap-1 text-xl sm:text-4xl leading-none">
+              Mandiri <span className="text-black font-bold">.</span>
+            </h1>
+          </div>
         </div>
         <div className="opacity-0">{children}</div>
       </div>
@@ -40,16 +44,14 @@ export default function Transition({ children }: { children: React.ReactNode }) 
 
   return (
     <div>
-      <div
-        id="transition-overlay"
-        className="min-h-screen bg-[#2973B2] z-[9999] fixed top-0 left-0 w-full flex items-center justify-center translate-y-0"
-      >
-        <img
-          id="transition-logo"
-          src="/ptmlm.png"
-          alt="PT MLM Logo"
-          className="w-48 h-auto object-contain opacity-0"
-        />
+      <div id="transition-overlay" className="min-h-screen bg-[#2973B2] z-[9999] fixed top-0 left-0 w-full flex items-center justify-center translate-y-0">
+        <div id="transition-logo" className="text-white font-bold flex flex-col items-center opacity-0">
+          <h1 className="text-xl sm:text-4xl leading-none">Mutiara</h1>
+          <h1 className="text-xl sm:text-4xl leading-none">Laboratorium</h1>
+          <h1 className="flex gap-1 text-xl sm:text-4xl leading-none">
+            Mandiri <span className="text-black font-bold">.</span>
+          </h1>
+        </div>
       </div>
 
       <div id="page-content" className="opacity-0">
